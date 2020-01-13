@@ -17,6 +17,22 @@ int blocks[7][4][4][4] = {
     0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,    0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,0,    0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,    0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,0
 };
 
+int gameBoard[HEIGHT][WIDTH];
+
+void InitGame()
+{
+    for (int y = 0; y < HEIGHT; y++) {
+        for (int x = 0; x < WIDTH; x++) {
+            if (x == 0 || x == WIDTH - 1)
+                gameBoard[y][x] = 1;
+            else if (y == HEIGHT - 1)
+                gameBoard[y][x] = 1;
+            else
+                gameBoard[y][x] = 0;
+        }
+    }
+}
+
 void Gotoxy(int x, int y)
 {
 	COORD pos = { x, y };
