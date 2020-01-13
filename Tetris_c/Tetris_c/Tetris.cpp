@@ -18,6 +18,7 @@ int blocks[7][4][4][4] = {
 };
 
 int gameBoard[HEIGHT][WIDTH];
+const char* figure[2] = { "  ", "бс" };
 
 void InitGame()
 {
@@ -29,6 +30,18 @@ void InitGame()
                 gameBoard[y][x] = 1;
             else
                 gameBoard[y][x] = 0;
+        }
+    }
+}
+
+void Draw()
+{
+    for (int y; y < HEIGHT; y++) {
+        for (int x; x < WIDTH; x++) {
+            if (gameBoard[y][x] == 1)
+                printf("%s", figure[1]);
+            else
+                printf("%s", figure[0]);
         }
     }
 }
@@ -57,3 +70,4 @@ void RemoveCurrentBlock(Tetris t)
             }
         }
 }
+

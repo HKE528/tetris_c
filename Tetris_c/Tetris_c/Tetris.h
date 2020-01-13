@@ -11,6 +11,12 @@
 #define WIDTH 10
 #define HEIGHT 20
 
+void InitGame();
+void Draw();
+void Gotoxy(int x, int y);
+void RemoveCursor();
+void RemoveCurrentBlock(Tetris t);
+
 typedef struct _tetris {
 	int level;
 	int gameover;
