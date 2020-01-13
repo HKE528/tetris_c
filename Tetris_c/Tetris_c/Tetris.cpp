@@ -1,19 +1,5 @@
 #include"Tetris.h"
 
-void Gotoxy(int x, int y)
-{
-	COORD pos = { x, y };
-
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
-}
-
-void RemoveCursor()
-{
-	CONSOLE_CURSOR_INFO curInfo;
-	curInfo.bVisible = 0;
-	GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), & curInfo);
-}
-
 int blocks[7][4][4][4] = {
     // ¤¤
     0,0,0,0,0,1,0,0,0,1,1,1,0,0,0,0,    0,0,0,0,0,1,1,0,0,1,0,0,0,1,0,0,    0,0,0,0,1,1,1,0,0,0,1,0,0,0,0,0,    0,0,1,0,0,0,1,0,0,1,1,0,0,0,0,0,
@@ -31,12 +17,26 @@ int blocks[7][4][4][4] = {
     0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,    0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,0,    0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,    0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,0
 };
 
+void Gotoxy(int x, int y)
+{
+	COORD pos = { x, y };
+
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
+void RemoveCursor()
+{
+	CONSOLE_CURSOR_INFO curInfo;
+	curInfo.bVisible = 0;
+	GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), & curInfo);
+}
+
 void RemoveCurrentBlock(Tetris t)
 {
     for(int i = 0; i < 4; i++)
         for (int j = 0; j < 4; j++) {
             if (blocks[t.curBlock][t.rotation][j][i] == 1) {
-                Gotoxy((i + t.curX) * 2 + t.absX, j + t.curY + t.absY);
+                Gotoxy(t.absX + (i + t.curX) * 2, t.absY + j + t.curY);
                 printf("  ");
             }
         }
