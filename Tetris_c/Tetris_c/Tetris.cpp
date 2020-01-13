@@ -23,7 +23,7 @@ int blocks[7][4][4][4] = {
 };
 
 int gameBoard[HEIGHT][WIDTH];
-const char* figure[2] = { "  ", "бс" };
+const char* figure[3] = { "  ", "бс", "бр" };
 
 Tetris InitGame()
 {
@@ -52,8 +52,9 @@ Tetris InitGame()
     return t;
 }
 
-void DrawBoard()
+void DrawBoard(Tetris& t)
 {
+    /*
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
             if (gameBoard[y][x] == 1)
@@ -62,6 +63,18 @@ void DrawBoard()
                 printf("%s", figure[0]);
         }
         printf("\n");
+    }*/
+
+    for (int i = 0; i < HEIGHT; i++) {
+        Gotoxy(t.absX, t.absY + i);
+        printf("%s", figure[2]);
+        Gotoxy(t.absX + WIDTH*2 - 2, t.absY + i);
+        printf("%s", figure[2]);
+    }
+
+    for (int i = 1; i < WIDTH; i++) {
+        Gotoxy(t.absX + i*2, t.absY + HEIGHT- 1);
+        printf("%s", figure[2]);
     }
 }
 

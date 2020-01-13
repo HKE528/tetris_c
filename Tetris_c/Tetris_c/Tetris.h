@@ -23,7 +23,7 @@ typedef struct _tetris {
 }Tetris;
 
 Tetris InitGame();
-void DrawBoard();
+void DrawBoard(Tetris& t);
 void Gotoxy(int x, int y);
 void RemoveCursor();
 void RemoveCurrentBlock(Tetris& t);

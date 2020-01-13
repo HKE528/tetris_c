@@ -8,7 +8,7 @@ int main()
 
 	while (1) {
 		system("cls");
-		DrawBoard();
+		DrawBoard(t);
 		SpawnBlock(t);
 
 		while (_kbhit()) {
