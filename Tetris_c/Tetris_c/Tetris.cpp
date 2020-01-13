@@ -11,5 +11,5 @@ void RemoveCursor()
 {
 	CONSOLE_CURSOR_INFO curInfo;
 	curInfo.bVisible = 0;
-	GetConsoleCursorInfo(STD_OUTPUT_HANDLE), & curInfo);
+	GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), & curInfo);
 }
