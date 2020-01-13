@@ -22,7 +22,7 @@ typedef struct _tetris {
 	int nextBlock;
 }Tetris;
 
-void InitGame();
+Tetris InitGame();
 void Draw();
 void Gotoxy(int x, int y);
 void RemoveCursor();

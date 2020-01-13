@@ -20,8 +20,19 @@ int blocks[7][4][4][4] = {
 int gameBoard[HEIGHT][WIDTH];
 const char* figure[2] = { "  ", "■" };
 
-void InitGame()
+Tetris InitGame()
 {
+    Tetris t;
+    t.level = 1;
+    t.gameover = 0;
+    t.score = 0;
+    t.rotation = 0;
+    t.absX = t.absY = 0;
+    t.curX = t.curY = 0;
+    t.curBlock = 0;
+    t.nextBlock = 0;
+
+    //게임보드 초기화
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
             if (x == 0 || x == WIDTH - 1)
