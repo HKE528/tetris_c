@@ -1,4 +1,9 @@
 #include"Tetris.h"
+#include <random>
+
+std::random_device rd;
+std::mt19937 mesenne(rd());
+std::uniform_int_distribution<> randomBlock(0, 3);
 
 int blocks[7][4][4][4] = {
     // ¤¤
@@ -47,7 +52,7 @@ Tetris InitGame()
     return t;
 }
 
-void Draw()
+void DrawBoard()
 {
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
@@ -74,7 +79,7 @@ void RemoveCursor()
 	GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), & curInfo);
 }
 
-void RemoveCurrentBlock(Tetris t)
+void RemoveCurrentBlock(Tetris& t)
 {
     for(int i = 0; i < 4; i++)
         for (int j = 0; j < 4; j++) {
@@ -85,3 +90,20 @@ void RemoveCurrentBlock(Tetris t)
         }
 }
 
+void SpawnBlock(Tetris& t)
+{
+    //t.curBlock = randomBlock(mesenne);
+    t.curBlock = 0;
+    t.curX = WIDTH / 2;
+    t.curY = 0;
+
+    Gotoxy(t.absX + t.curX, t.absY + t.curY);
+    for (int y = 0; y < 4; y++) {
+        for (int x = 0; x < 4; x++) {
+            if (blocks[t.curBlock][t.rotation][y][x] == 1) {
+                Gotoxy(t.absX + t.curX + x*2, t.absY + t.curY + y);
+                printf("%s", figure[1]);
+            }
+        }
+    }
+}

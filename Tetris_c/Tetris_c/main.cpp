@@ -8,7 +8,8 @@ int main()
 
 	while (1) {
 		system("cls");
-		Draw();
+		DrawBoard();
+		SpawnBlock(t);
 
 		while (_kbhit()) {
 			key = _getch();
