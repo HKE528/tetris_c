@@ -43,6 +43,8 @@ Tetris InitGame()
                 gameBoard[y][x] = 0;
         }
     }
+
+    return t;
 }
 
 void Draw()

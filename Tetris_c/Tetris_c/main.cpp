@@ -2,7 +2,7 @@
 
 int main()
 {
-	InitGame();
+	Tetris t = InitGame();
 
 	char key;
 
