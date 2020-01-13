@@ -36,13 +36,14 @@ void InitGame()
 
 void Draw()
 {
-    for (int y; y < HEIGHT; y++) {
-        for (int x; x < WIDTH; x++) {
+    for (int y = 0; y < HEIGHT; y++) {
+        for (int x = 0; x < WIDTH; x++) {
             if (gameBoard[y][x] == 1)
                 printf("%s", figure[1]);
             else
                 printf("%s", figure[0]);
         }
+        printf("\n");
     }
 }
 

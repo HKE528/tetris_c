@@ -2,9 +2,14 @@
 
 int main()
 {
+	InitGame();
+
 	char key;
 
 	while (1) {
+		system("cls");
+		Draw();
+
 		while (_kbhit()) {
 			key = _getch();
 			switch (key) {
@@ -29,4 +34,4 @@ int main()
 			}
 		}
 	}
-}
+} 
