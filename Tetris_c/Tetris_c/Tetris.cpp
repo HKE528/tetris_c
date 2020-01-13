@@ -30,3 +30,14 @@ int blocks[7][4][4][4] = {
     // ¤¡¤¤¹Ý´ë
     0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,    0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,0,    0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,    0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,0
 };
+
+void RemoveCurrentBlock(Tetris t)
+{
+    for(int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++) {
+            if (blocks[t.curBlock][t.rotation][j][i] == 1) {
+                Gotoxy((i + t.curX) * 2 + t.absX, j + t.curY + t.absY);
+                printf("  ");
+            }
+        }
+}
