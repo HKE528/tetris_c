@@ -27,18 +27,15 @@ int main()
 				break;
 
 			case DOWN:
-				if(!CollisionCheck(t))
-					MoveDown(t);
+				MoveDown(t);
 				break;
 
 			case LEFT:
-				if (!CollisionCheck(t))
-					MoveLeftAndRight(t, -1);
+				MoveLeftAndRight(t, -1);
 				break;
 
 			case RIGHT:
-				if (!CollisionCheck(t))
-					MoveLeftAndRight(t, 1);
+				MoveLeftAndRight(t, 1);
 				break;
 			}
 			if (key == SPACE) {

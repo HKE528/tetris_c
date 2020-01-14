@@ -27,6 +27,7 @@ const char* figure[3] = { "  ", "■", "□" };
 
 Tetris InitGame()
 {
+    //테트리스 정보 구조테 초기화
     Tetris t;
     t.level = 1;
     t.gameover = 0;
@@ -37,7 +38,7 @@ Tetris InitGame()
     t.curBlock = 0;
     t.nextBlock = 0;
 
-    
+    //게임 보드 초기화
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
             if (x == 0 || x == WIDTH - 1)
@@ -121,7 +122,7 @@ void SpawnBlock(Tetris& t)
 {
     //t.curBlock = randomBlock(mesenne);
     t.curBlock = 0; // 임시
-    t.curX = WIDTH / 2 + 1;
+    t.curX = WIDTH / 2 - 2;
     t.curY = 0;
 
     DrawBlock(t);
@@ -143,14 +144,20 @@ void MoveLeftAndRight(Tetris& t, int direction)
 {
     t.curX += direction;
 
-    Gotoxy(t.absX + t.curX, t.absY + t.curY);
+    if(CollisionCheck(t))
+        t.curX -= direction;
+    else
+        Gotoxy(t.absX + t.curX, t.absY + t.curY);
 }
 
 void MoveDown(Tetris& t)
 {
     t.curY += 1;
 
-    Gotoxy(t.absX + t.curX, t.absY + t.curY);
+    if (CollisionCheck(t))
+        t.curY -= 1;
+    else
+        Gotoxy(t.absX + t.curX, t.absY + t.curY);
 }
 
 void RotationBlock(Tetris& t)
@@ -161,7 +168,7 @@ void RotationBlock(Tetris& t)
 
 bool CollisionCheck(Tetris& t)
 {
-    /*
+    
     int dat = 0;
 
     for (int y = 0; y < 4; y++) {
@@ -175,6 +182,6 @@ bool CollisionCheck(Tetris& t)
                 return true;
         }
     }
-    */
+    
     return false;
 }
