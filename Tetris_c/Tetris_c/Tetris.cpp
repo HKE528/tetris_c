@@ -79,6 +79,19 @@ void DrawBoard(Tetris& t)
     }
 }
 
+void DrawBlock(Tetris& t)
+{
+    Gotoxy(t.absX + t.curX, t.absY + t.curY);
+    for (int y = 0; y < 4; y++) {
+        for (int x = 0; x < 4; x++) {
+            if (blocks[t.curBlock][t.rotation][y][x] == 1) {
+                Gotoxy(t.absX + t.curX + x * 2, t.absY + t.curY + y);
+                printf("%s", figure[1]);
+            }
+        }
+    }
+}
+
 void Gotoxy(int x, int y)
 {
 	COORD pos = { x, y };
@@ -107,10 +120,13 @@ void RemoveCurrentBlock(Tetris& t)
 void SpawnBlock(Tetris& t)
 {
     //t.curBlock = randomBlock(mesenne);
-    t.curBlock = 0;
+    t.curBlock = 0; // юс╫ц
     t.curX = WIDTH / 2;
     t.curY = 0;
 
+    DrawBlock(t);
+
+    /*
     Gotoxy(t.absX + t.curX, t.absY + t.curY);
     for (int y = 0; y < 4; y++) {
         for (int x = 0; x < 4; x++) {
@@ -120,4 +136,5 @@ void SpawnBlock(Tetris& t)
             }
         }
     }
+    */
 }
