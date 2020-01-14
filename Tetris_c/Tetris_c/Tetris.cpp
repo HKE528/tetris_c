@@ -177,6 +177,8 @@ void MoveDown(Tetris& t)
 
 void RotationBlock(Tetris& t)
 {
+    RemoveCurrentBlock(t);
+
     t.rotation = (t.rotation + 1) % 4;
 
     if(CollisionCheck(t))
