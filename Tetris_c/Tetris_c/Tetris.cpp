@@ -123,8 +123,9 @@ void RemoveCursor()
 
 void SpawnBlock(Tetris& t)
 {
-    //t.curBlock = randomBlock(mesenne);
-    t.curBlock = 0; // юс╫ц
+    t.curBlock = randomBlock(mesenne);
+    t.rotation = randomBlock(mesenne);
+    //t.curBlock = 0;
     t.curX = WIDTH / 2 - 2;
     t.curY = 0;
 
