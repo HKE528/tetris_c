@@ -144,8 +144,6 @@ void MoveLeftAndRight(Tetris& t, int direction)
     t.curX += direction * 2;
 
     Gotoxy(t.absX + t.curX, t.absY + t.curY);
-
-    DrawBlock(t);
 }
 
 void MoveDown(Tetris& t)
@@ -153,12 +151,9 @@ void MoveDown(Tetris& t)
     t.curY += 1;
 
     Gotoxy(t.absX + t.curX, t.absY + t.curY);
-
-    DrawBlock(t);
 }
 
 void RotationBlock(Tetris& t)
 {
     t.rotation = (t.rotation + 1) % 4;
-
 }
