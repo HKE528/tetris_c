@@ -22,7 +22,7 @@ int main()
 			key = _getch();
 			switch (key) {
 			case UP:
-				printf("UP\n");
+				RotationBlock(t);
 				break;
 
 			case DOWN:

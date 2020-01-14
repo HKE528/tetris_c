@@ -156,3 +156,9 @@ void MoveDown(Tetris& t)
 
     DrawBlock(t);
 }
+
+void RotationBlock(Tetris& t)
+{
+    t.rotation = (t.rotation + 1) % 4;
+
+}
