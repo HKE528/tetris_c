@@ -7,12 +7,13 @@ int main()
 
 	char key;
 
+	RemoveCursor();
+
 	while (1) {
 		system("cls");
 		DrawBoard(t);
 		DrawBlock(t);
-		RemoveCursor();
-
+		
 		if (!isBlockSpawn) {
 			SpawnBlock(t);
 			isBlockSpawn = true;
@@ -26,15 +27,18 @@ int main()
 				break;
 
 			case DOWN:
-				MoveDown(t);
+				if(!CollisionCheck(t))
+					MoveDown(t);
 				break;
 
 			case LEFT:
-				MoveLeftAndRight(t, -1);
+				if (!CollisionCheck(t))
+					MoveLeftAndRight(t, -1);
 				break;
 
 			case RIGHT:
-				MoveLeftAndRight(t, 1);
+				if (!CollisionCheck(t))
+					MoveLeftAndRight(t, 1);
 				break;
 			}
 			if (key == SPACE) {

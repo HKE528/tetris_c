@@ -32,3 +32,4 @@ void DrawBlock(Tetris& t);
 void MoveLeftAndRight(Tetris& t, int direction);
 void MoveDown(Tetris& t);
 void RotationBlock(Tetris& t);
+bool CollisionCheck(Tetris& t);

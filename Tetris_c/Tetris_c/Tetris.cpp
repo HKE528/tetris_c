@@ -37,7 +37,7 @@ Tetris InitGame()
     t.curBlock = 0;
     t.nextBlock = 0;
 
-    /*
+    
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
             if (x == 0 || x == WIDTH - 1)
@@ -48,8 +48,7 @@ Tetris InitGame()
                 gameBoard[y][x] = 0;
         }
     }
-    */
-
+    
     return t;
 }
 
@@ -65,6 +64,7 @@ void DrawBoard(Tetris& t)
         }
         printf("\n");
     }*/
+
 
     for (int i = 0; i < HEIGHT; i++) {
         Gotoxy(t.absX, t.absY + i);
@@ -85,7 +85,7 @@ void DrawBlock(Tetris& t)
     for (int y = 0; y < 4; y++) {
         for (int x = 0; x < 4; x++) {
             if (blocks[t.curBlock][t.rotation][y][x] == 1) {
-                Gotoxy(t.absX + t.curX + x * 2, t.absY + t.curY + y);
+                Gotoxy(t.absX + (t.curX + x) * 2, t.absY + t.curY + y);
                 printf("%s", figure[1]);
             }
         }
@@ -121,7 +121,7 @@ void SpawnBlock(Tetris& t)
 {
     //t.curBlock = randomBlock(mesenne);
     t.curBlock = 0; // юс╫ц
-    t.curX = WIDTH / 2;
+    t.curX = WIDTH / 2 + 1;
     t.curY = 0;
 
     DrawBlock(t);
@@ -141,7 +141,7 @@ void SpawnBlock(Tetris& t)
 
 void MoveLeftAndRight(Tetris& t, int direction)
 {
-    t.curX += direction * 2;
+    t.curX += direction;
 
     Gotoxy(t.absX + t.curX, t.absY + t.curY);
 }
@@ -156,4 +156,25 @@ void MoveDown(Tetris& t)
 void RotationBlock(Tetris& t)
 {
     t.rotation = (t.rotation + 1) % 4;
+}
+
+
+bool CollisionCheck(Tetris& t)
+{
+    /*
+    int dat = 0;
+
+    for (int y = 0; y < 4; y++) {
+        for (int x = 0; x < 4; x++) {
+            if ((t.curX + x == 0) || (t.curX + x == WIDTH - 1))
+                dat = 1;
+            else
+                dat = gameBoard[t.curY + y][t.curX + x];
+
+            if (blocks[t.curBlock][t.rotation][y][x] == 1 && dat == 1)
+                return true;
+        }
+    }
+    */
+    return false;
 }
