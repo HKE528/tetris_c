@@ -8,16 +8,18 @@ int main()
 	char key;
 
 	RemoveCursor();
+	DrawBoard(t);
+
 
 	while (1) {
-		system("cls");
-		DrawBoard(t);
-		DrawBlock(t);
-		
+		//system("cls");
 		if (!isBlockSpawn) {
 			SpawnBlock(t);
 			isBlockSpawn = true;
 		}
+
+		MoveDown(t);
+		Sleep(500);
 
 		while (_kbhit()) {
 			key = _getch();
@@ -42,5 +44,6 @@ int main()
 				printf("SPACE\n");
 			}
 		}
+		
 	}
 } 

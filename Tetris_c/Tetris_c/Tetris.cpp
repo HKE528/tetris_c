@@ -82,7 +82,7 @@ void DrawBoard(Tetris& t)
 
 void DrawBlock(Tetris& t)
 {
-    Gotoxy(t.absX + t.curX, t.absY + t.curY);
+    //Gotoxy(t.absX + t.curX, t.absY + t.curY);
     for (int y = 0; y < 4; y++) {
         for (int x = 0; x < 4; x++) {
             if (blocks[t.curBlock][t.rotation][y][x] == 1) {
@@ -91,6 +91,18 @@ void DrawBlock(Tetris& t)
             }
         }
     }
+}
+
+void RemoveCurrentBlock(Tetris& t)
+{
+    for (int y = 0; y < 4; y++)
+        for (int x = 0; x < 4; x++) {
+            if (blocks[t.curBlock][t.rotation][y][x] == 1) {
+                Gotoxy(t.absX + (x + t.curX) * 2, t.absY + y + t.curY);
+                printf("%s", figure[0]);
+                //printf("  ");
+            }
+        }
 }
 
 void Gotoxy(int x, int y)
@@ -102,21 +114,12 @@ void Gotoxy(int x, int y)
 
 void RemoveCursor()
 {
-	CONSOLE_CURSOR_INFO curInfo;
+    CONSOLE_CURSOR_INFO curInfo = { 0, };
+    curInfo.dwSize = 1;
 	curInfo.bVisible = 0;
-	GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), & curInfo);
+	GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
 }
 
-void RemoveCurrentBlock(Tetris& t)
-{
-    for(int i = 0; i < 4; i++)
-        for (int j = 0; j < 4; j++) {
-            if (blocks[t.curBlock][t.rotation][j][i] == 1) {
-                Gotoxy(t.absX + (i + t.curX) * 2, t.absY + j + t.curY);
-                printf("  ");
-            }
-        }
-}
 
 void SpawnBlock(Tetris& t)
 {
@@ -142,22 +145,29 @@ void SpawnBlock(Tetris& t)
 
 void MoveLeftAndRight(Tetris& t, int direction)
 {
+    RemoveCurrentBlock(t);
+
     t.curX += direction;
 
     if(CollisionCheck(t))
         t.curX -= direction;
     else
         Gotoxy(t.absX + t.curX, t.absY + t.curY);
+
+    DrawBlock(t);
 }
 
 void MoveDown(Tetris& t)
 {
+    RemoveCurrentBlock(t);
     t.curY += 1;
 
     if (CollisionCheck(t))
         t.curY -= 1;
     else
         Gotoxy(t.absX + t.curX, t.absY + t.curY);
+
+    DrawBlock(t);
 }
 
 void RotationBlock(Tetris& t)
