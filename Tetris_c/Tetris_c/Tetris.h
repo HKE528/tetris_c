@@ -8,8 +8,8 @@
 #define LEFT 75
 #define RIGHT 77
 #define SPACE 32
-#define WIDTH 10
-#define HEIGHT 20
+#define WIDTH 15
+#define HEIGHT 25
 
 typedef struct _tetris {
 	int level;

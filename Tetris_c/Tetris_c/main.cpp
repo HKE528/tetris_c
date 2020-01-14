@@ -3,13 +3,16 @@
 int main()
 {
 	Tetris t = InitGame();
+	bool blockSpawn = false;
 
 	char key;
 
 	while (1) {
 		system("cls");
 		DrawBoard(t);
-		SpawnBlock(t);
+
+		if(!blockSpawn)
+			SpawnBlock(t);
 
 		while (_kbhit()) {
 			key = _getch();

@@ -37,7 +37,7 @@ Tetris InitGame()
     t.curBlock = 0;
     t.nextBlock = 0;
 
-    //게임보드 초기화
+    /*
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
             if (x == 0 || x == WIDTH - 1)
@@ -48,6 +48,7 @@ Tetris InitGame()
                 gameBoard[y][x] = 0;
         }
     }
+    */
 
     return t;
 }
@@ -73,7 +74,7 @@ void DrawBoard(Tetris& t)
     }
 
     for (int i = 1; i < WIDTH; i++) {
-        Gotoxy(t.absX + i*2, t.absY + HEIGHT- 1);
+        Gotoxy(t.absX + i*2, t.absY + HEIGHT - 1);
         printf("%s", figure[2]);
     }
 }
