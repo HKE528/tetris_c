@@ -20,6 +20,7 @@ typedef struct _tetris {
 	int curX, curY;
 	int curBlock;
 	int nextBlock;
+	bool isBlockSpawn;
 }Tetris;
 
 Tetris InitGame();

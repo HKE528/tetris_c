@@ -37,6 +37,7 @@ Tetris InitGame()
     t.curX = t.curY = 0;
     t.curBlock = 0;
     t.nextBlock = 0;
+    t.isBlockSpawn = false;
 
     //게임 보드 초기화
     for (int y = 0; y < HEIGHT; y++) {
@@ -211,4 +212,6 @@ void BlockFix(Tetris& t)
                 gameBoard[t.curY + y][t.curX + x] = 1;
         }
     }
+
+    t.isBlockSpawn = false;
 }

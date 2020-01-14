@@ -3,8 +3,6 @@
 int main()
 {
 	Tetris t = InitGame();
-	bool isBlockSpawn = false;
-
 	char key;
 
 	RemoveCursor();
@@ -13,12 +11,13 @@ int main()
 
 	while (1) {
 		//system("cls");
-		if (!isBlockSpawn) {
+		if (!t.isBlockSpawn) {
 			SpawnBlock(t);
-			isBlockSpawn = true;
+			t.isBlockSpawn = true;
 		}
 
 		MoveDown(t);
+		DrawBoard(t);
 		Sleep(500);
 
 		while (_kbhit()) {
@@ -44,7 +43,5 @@ int main()
 				printf("SPACE\n");
 			}
 		}
-
-		DrawBoard(t);
 	}
 } 
