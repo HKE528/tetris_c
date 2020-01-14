@@ -8,7 +8,7 @@ int main()
 	char key;
 
 	RemoveCursor();
-	DrawBoard(t);
+	DrawFrame(t);
 
 
 	while (1) {
@@ -44,6 +44,7 @@ int main()
 				printf("SPACE\n");
 			}
 		}
-		
+
+		DrawBoard(t);
 	}
 } 

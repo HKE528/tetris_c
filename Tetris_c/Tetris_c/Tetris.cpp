@@ -23,11 +23,11 @@ int blocks[7][4][4][4] = {
 };
 
 int gameBoard[HEIGHT][WIDTH];
-const char* figure[3] = { "  ", "■", "□" };
+const char* figure[4] = { "  ", "■", "▦", "□" };
 
 Tetris InitGame()
 {
-    //테트리스 정보 구조테 초기화
+    //테트리스 정보 구조체 초기화
     Tetris t;
     t.level = 1;
     t.gameover = 0;
@@ -55,27 +55,27 @@ Tetris InitGame()
 
 void DrawBoard(Tetris& t)
 {
-    /*
-    for (int y = 0; y < HEIGHT; y++) {
-        for (int x = 0; x < WIDTH; x++) {
+    
+    for (int y = 0; y < HEIGHT - 1; y++) {
+        for (int x = 1; x < WIDTH - 1; x++) {
+            Gotoxy(t.absX + x * 2, t.absY + y);
             if (gameBoard[y][x] == 1)
-                printf("%s", figure[1]);
-            else
-                printf("%s", figure[0]);
+                printf("%s", figure[3]);
         }
-        printf("\n");
-    }*/
+    }
+}
 
-
+void DrawFrame(Tetris& t)
+{
     for (int i = 0; i < HEIGHT; i++) {
         Gotoxy(t.absX, t.absY + i);
         printf("%s", figure[2]);
-        Gotoxy(t.absX + WIDTH*2 - 2, t.absY + i);
+        Gotoxy(t.absX + WIDTH * 2 - 2, t.absY + i);
         printf("%s", figure[2]);
     }
 
     for (int i = 1; i < WIDTH; i++) {
-        Gotoxy(t.absX + i*2, t.absY + HEIGHT - 1);
+        Gotoxy(t.absX + i * 2, t.absY + HEIGHT - 1);
         printf("%s", figure[2]);
     }
 }
@@ -160,10 +160,13 @@ void MoveLeftAndRight(Tetris& t, int direction)
 void MoveDown(Tetris& t)
 {
     RemoveCurrentBlock(t);
+
     t.curY += 1;
 
-    if (CollisionCheck(t))
+    if (CollisionCheck(t)) {
         t.curY -= 1;
+        BlockFix(t);
+    }
     else
         Gotoxy(t.absX + t.curX, t.absY + t.curY);
 
@@ -197,4 +200,14 @@ bool CollisionCheck(Tetris& t)
     }
     
     return false;
+}
+
+void BlockFix(Tetris& t)
+{
+    for (int y = 0; y < 4; y++) {
+        for (int x = 0; x < 4; x++) {
+            if (blocks[t.curBlock][t.rotation][y][x] == 1)
+                gameBoard[t.curY + y][t.curX + x] = 1;
+        }
+    }
 }
