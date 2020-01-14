@@ -30,3 +30,4 @@ void RemoveCurrentBlock(Tetris& t);
 void SpawnBlock(Tetris& t);
 void DrawBlock(Tetris& t);
 void MoveLeftAndRight(Tetris& t, int direction);
+void MoveDown(Tetris& t);

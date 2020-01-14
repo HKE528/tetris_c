@@ -147,3 +147,12 @@ void MoveLeftAndRight(Tetris& t, int direction)
 
     DrawBlock(t);
 }
+
+void MoveDown(Tetris& t)
+{
+    t.curY += 1;
+
+    Gotoxy(t.absX + t.curX, t.absY + t.curY);
+
+    DrawBlock(t);
+}

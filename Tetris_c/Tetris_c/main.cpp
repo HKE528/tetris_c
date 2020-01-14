@@ -26,7 +26,7 @@ int main()
 				break;
 
 			case DOWN:
-				printf("DOWN\n");
+				MoveDown(t);
 				break;
 
 			case LEFT:
