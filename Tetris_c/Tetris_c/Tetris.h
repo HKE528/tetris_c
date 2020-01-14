@@ -28,3 +28,5 @@ void Gotoxy(int x, int y);
 void RemoveCursor();
 void RemoveCurrentBlock(Tetris& t);
 void SpawnBlock(Tetris& t);
+void DrawBlock(Tetris& t);
+void MoveLeftAndRight(Tetris& t, int direction);

@@ -3,16 +3,20 @@
 int main()
 {
 	Tetris t = InitGame();
-	bool blockSpawn = false;
+	bool isBlockSpawn = false;
 
 	char key;
 
 	while (1) {
 		system("cls");
 		DrawBoard(t);
+		DrawBlock(t);
+		RemoveCursor();
 
-		if(!blockSpawn)
+		if (!isBlockSpawn) {
 			SpawnBlock(t);
+			isBlockSpawn = true;
+		}
 
 		while (_kbhit()) {
 			key = _getch();
@@ -26,11 +30,11 @@ int main()
 				break;
 
 			case LEFT:
-				printf("LEFT\n");
+				MoveLeftAndRight(t, -1);
 				break;
 
 			case RIGHT:
-				printf("RIGHT\n");
+				MoveLeftAndRight(t, 1);
 				break;
 			}
 			if (key == SPACE) {

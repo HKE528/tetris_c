@@ -138,3 +138,12 @@ void SpawnBlock(Tetris& t)
     }
     */
 }
+
+void MoveLeftAndRight(Tetris& t, int direction)
+{
+    t.curX += direction * 2;
+
+    Gotoxy(t.absX + t.curX, t.absY + t.curY);
+
+    DrawBlock(t);
+}
