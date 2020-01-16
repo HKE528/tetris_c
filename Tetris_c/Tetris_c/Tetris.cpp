@@ -4,7 +4,8 @@
 
 std::random_device rd;
 std::mt19937 mt(rd());
-std::uniform_int_distribution<int> randomBlock(0, 3);
+std::uniform_int_distribution<int> randomBlock(0, 6);
+std::uniform_int_distribution<int> randomRotaion(0, 3);
 
 int blocks[7][4][4][4] = {
     // ¤¤
@@ -126,9 +127,9 @@ void RemoveCursor()
 void SpawnBlock(Tetris& t)
 {
     t.curBlock = randomBlock(mt);
-    t.rotation = randomBlock(mt);
+    t.rotation = randomRotaion(mt);
     //t.curBlock = 0;
-    t.curX = WIDTH / 2 - 2;
+    t.curX = WIDTH / 2 - 1;
     t.curY = 0;
 
     DrawBlock(t);
