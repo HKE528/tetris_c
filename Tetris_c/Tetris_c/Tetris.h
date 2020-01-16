@@ -36,3 +36,4 @@ void RotationBlock(Tetris& t);
 bool CollisionCheck(Tetris& t);
 void BlockFix(Tetris& t);
 void DrawFrame(Tetris& t);
+void RemoveLine(Tetris& t);

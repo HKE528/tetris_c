@@ -126,9 +126,9 @@ void RemoveCursor()
 
 void SpawnBlock(Tetris& t)
 {
-    t.curBlock = randomBlock(mt);
+    //t.curBlock = randomBlock(mt);
     t.rotation = randomRotaion(mt);
-    //t.curBlock = 0;
+    t.curBlock = 3;
     t.curX = WIDTH / 2 - 1;
     t.curY = 0;
 
@@ -218,4 +218,36 @@ void BlockFix(Tetris& t)
     }
 
     t.isBlockSpawn = false;
+
+    RemoveLine(t);
+}
+
+void RemoveLine(Tetris& t)
+{
+    int isZero;
+    for (int y = 1; y < HEIGHT - 1; y++) {
+        isZero = 1;
+
+        for (int x = 1; x < WIDTH - 1; x++) {
+            isZero *= gameBoard[y][x];
+        }
+
+        if (isZero == 1) {
+            for (int x = 1; x < WIDTH - 1; x++) {
+                gameBoard[y][x] = 0;
+
+                Gotoxy(t.absX + x * 2, t.absY + y);
+                printf("%s", figure[0]);
+            }
+
+            for (int i = y; i >= 0; i--) {
+                for (int x = 1; x < WIDTH - 1; x++) {
+                    gameBoard[i][x] = gameBoard[i - 1][x];
+
+                    Gotoxy(t.absX + x * 2, t.absY + i);
+                    printf("%s", figure[0]);
+                }
+            }
+        }
+    }
 }
