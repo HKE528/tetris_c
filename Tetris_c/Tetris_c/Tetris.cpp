@@ -1,9 +1,10 @@
 #include"Tetris.h"
 #include <random>
+#include <ctime>
 
 std::random_device rd;
-std::mt19937 mesenne(rd());
-std::uniform_int_distribution<> randomBlock(0, 3);
+std::mt19937 mt(rd());
+std::uniform_int_distribution<int> randomBlock(0, 3);
 
 int blocks[7][4][4][4] = {
     // ¤¤
@@ -124,8 +125,8 @@ void RemoveCursor()
 
 void SpawnBlock(Tetris& t)
 {
-    t.curBlock = randomBlock(mesenne);
-    t.rotation = randomBlock(mesenne);
+    t.curBlock = randomBlock(mt);
+    t.rotation = randomBlock(mt);
     //t.curBlock = 0;
     t.curX = WIDTH / 2 - 2;
     t.curY = 0;

@@ -18,7 +18,7 @@ int main()
 
 		MoveDown(t);
 		DrawBoard(t);
-		Sleep(500);
+		Sleep(50);
 
 		while (_kbhit()) {
 			key = _getch();
