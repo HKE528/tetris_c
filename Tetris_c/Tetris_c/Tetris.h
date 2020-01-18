@@ -12,6 +12,8 @@
 #define HEIGHT 25
 
 typedef struct _tetris {
+	int curBlock;
+	int nextBlock;
 	int rotation;
 	int absX, absY;
 	int curX, curY;
