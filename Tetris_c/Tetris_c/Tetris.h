@@ -12,9 +12,6 @@
 #define HEIGHT 25
 
 typedef struct _tetris {
-	int level;
-	int gameover;
-	int score;
 	int rotation;
 	int absX, absY;
 	int curX, curY;
