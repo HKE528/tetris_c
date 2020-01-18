@@ -35,3 +35,4 @@ void BlockFix(Tetris& t);
 void DrawFrame(Tetris& t);
 void RemoveLine(Tetris& t);
 bool GameOver();
+void QuickDown(Tetris& t);

@@ -40,7 +40,7 @@ int main()
 				break;
 			}
 			if (key == SPACE) {
-				printf("SPACE\n");
+				QuickDown(t);
 			}
 		}
 	}

@@ -31,9 +31,7 @@ Tetris InitGame()
 {
     //테트리스 정보 구조체 초기화
     Tetris t;
-    t.level = 1;
-    t.gameover = 0;
-    t.score = 0;
+
     t.rotation = 0;
     t.absX = t.absY = 0;
     t.curX = t.curY = 0;
@@ -259,4 +257,17 @@ bool GameOver()
     }
 
     return false;
+}
+
+void QuickDown(Tetris& t)
+{
+    RemoveCurrentBlock(t);
+
+    while (!CollisionCheck(t)) {
+        t.curY++;
+    }
+    
+    t.curY--;
+
+    DrawBlock(t);
 }
