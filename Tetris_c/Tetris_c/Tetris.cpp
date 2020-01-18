@@ -32,6 +32,8 @@ Tetris InitGame()
     //테트리스 정보 구조체 초기화
     Tetris t;
 
+    t.curBlock = 0;
+    t.nextBlock = 0;
     t.rotation = 0;
     t.absX = t.absY = 0;
     t.curX = t.curY = 0;
@@ -124,11 +126,14 @@ void RemoveCursor()
 
 void SpawnBlock(Tetris& t)
 {
-    //t.curBlock = randomBlock(mt);
+    t.curBlock = t.nextBlock;
+    t.nextBlock = randomBlock(mt);
     t.rotation = randomRotaion(mt);
-    t.curBlock = 3;
+    //t.curBlock = 3;
     t.curX = WIDTH / 2 - 1;
     t.curY = 0;
+    
+    ShowNextBlock(t);
 
     DrawBlock(t);
 
@@ -270,4 +275,23 @@ void QuickDown(Tetris& t)
     t.curY--;
 
     DrawBlock(t);
+}
+
+void ShowNextBlock(Tetris& t)
+{
+    for (int y = 0; y < 4; y++) {
+        for (int x = 0; x < 4; x++) {
+            Gotoxy(2 + t.absX + (WIDTH + x) * 2, 1 + t.absY + y);
+            printf("%s", figure[0]);
+        }
+    }
+
+    for (int y = 0; y < 4; y++) {
+        for (int x = 0; x < 4; x++) {
+            if (blocks[t.nextBlock][t.rotation][y][x] == 1) {
+                Gotoxy(2 + t.absX + (WIDTH + x) * 2, 1 + t.absY + y);
+                printf("%s", figure[1]);
+            }
+        }
+    }
 }
