@@ -187,7 +187,6 @@ void RotationBlock(Tetris& t)
         t.rotation = (t.rotation == 0) ? 3 : (t.rotation -1) % 4;
 }
 
-
 bool CollisionCheck(Tetris& t)
 {
     
@@ -250,4 +249,14 @@ void RemoveLine(Tetris& t)
             }
         }
     }
+}
+
+bool GameOver()
+{
+    for (int i = 1; i < WIDTH - 1; i++) {
+        if (gameBoard[0][i] == 1)
+            return true;
+    }
+
+    return false;
 }

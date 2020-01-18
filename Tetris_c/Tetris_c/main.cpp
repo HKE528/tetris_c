@@ -9,7 +9,7 @@ int main()
 	DrawFrame(t);
 
 
-	while (1) {
+	while (!GameOver()) {
 		//system("cls");
 		if (!t.isBlockSpawn) {
 			SpawnBlock(t);
